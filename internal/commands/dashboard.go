@@ -25,9 +25,9 @@ func newDashboardCmd() *cobra.Command {
 	)
 
 	dashboardCmd := &cobra.Command{
-		Use:   "kubethan",
-		Short: "kubethan kubernetes dashboard",
-		Long:  "kubethan is a dashboard for high bandwidth cluster analysis operations",
+		Use:   "kubeon",
+		Short: "kubeon kubernetes dashboard",
+		Long:  "kubeon is a dashboard for high bandwidth cluster analysis operations",
 		Run: func(cmd *cobra.Command, args []string) {
 
 		},

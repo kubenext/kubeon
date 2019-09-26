@@ -1,8 +1,10 @@
-module github.com/kubenext/kubethan
+module github.com/kubenext/kubeon
 
 go 1.13
 
 require (
+	github.com/GeertJohan/go.rice v1.0.0 // indirect
+	github.com/golang/mock v1.3.1 // indirect
 	github.com/imdario/mergo v0.3.7 // indirect
 	github.com/spf13/cobra v0.0.5
 	golang.org/x/net v0.0.0-20190926025831-c00fd9afed17 // indirect

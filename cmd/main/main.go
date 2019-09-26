@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kubenext/kubethan/internal/commands"
+	"github.com/kubenext/kubeon/internal/commands"
 	"math/rand"
 	"time"
 )
