@@ -51,7 +51,7 @@ test:
 
 .PHONY: build
 build:
-	@echo "--- $@"
+	@echo "===> $@"
 	@mkdir -p ./build
 	@env $(GOBUILD) -o build/kubeon $(GO_FLAGS) -v ./cmd/main
 
