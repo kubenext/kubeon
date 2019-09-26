@@ -41,8 +41,8 @@ type ClientInterface interface {
 	KubernetesClient() (kubernetes.Interface, error)
 	DynamicClient() (dynamic.Interface, error)
 	DiscoveryClient() (discovery.DiscoveryInterface, error)
-	// NamespaceClient() (NamespaceInterface, error)
-	// InfoClient() (InfoInterface, error)
+	NamespaceClient() (NamespaceInterface, error)
+	InfoClient() (InfoInterface, error)
 	Version() (string, error)
 	Close()
 	RestInterface
@@ -53,11 +53,29 @@ type Cluster struct {
 	restConfig       *rest.Config
 	logger           log.Logger
 	kubernetesClient kubernetes.Interface
-	dynamicCLient    dynamic.Interface
+	dynamicClient    dynamic.Interface
 	discoveryClient  discovery.DiscoveryInterface
 	restMapper       *restmapper.DeferredDiscoveryRESTMapper
 	closeFn          context.CancelFunc
 	defaultNamespace string
+}
+
+func (c *Cluster) NamespaceClient() (NamespaceInterface, error) {
+	di, err := c.DynamicClient()
+	if err != nil {
+		return nil, err
+	}
+
+	ns, _, err := c.clientConfig.Namespace()
+	if err != nil {
+		return nil, err
+	}
+
+	return newNamespaceClient(di, ns), nil
+}
+
+func (c *Cluster) InfoClient() (InfoInterface, error) {
+	return newClusterInfo(c.clientConfig), nil
 }
 
 func (c *Cluster) Version() (string, error) {
@@ -93,7 +111,7 @@ func (c *Cluster) KubernetesClient() (kubernetes.Interface, error) {
 }
 
 func (c *Cluster) DynamicClient() (dynamic.Interface, error) {
-	return c.dynamicCLient, nil
+	return c.dynamicClient, nil
 }
 
 func (c *Cluster) DiscoveryClient() (discovery.DiscoveryInterface, error) {
@@ -158,7 +176,7 @@ func newCluster(ctx context.Context, clientConfig clientcmd.ClientConfig, restCo
 		restConfig:       restConfig,
 		logger:           log.From(ctx),
 		kubernetesClient: kubernetesClient,
-		dynamicCLient:    dynamicClient,
+		dynamicClient:    dynamicClient,
 		discoveryClient:  discoveryClient,
 		restMapper:       restMapper,
 		defaultNamespace: defaultNamespace,
