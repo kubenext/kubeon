@@ -3,8 +3,7 @@
 
 SHELL=/bin/bash
 
-VERSION_DATE=$(shell date -u +%y.%m.%d)
-VERSION='v$(VERSION_DATE)'
+VERSION ?= 'v0.1.0'
 BUILD_TIME=$(shell date -u +%Y-%m-%dT%T%z)
 GIT_COMMIT=$(shell git rev-parse --short HEAD)
 
@@ -60,6 +59,10 @@ release:
 	@echo "===> $@"
 	git tag -a $(VERSION) -m "Release $(VERSION)"
 	git push --follow-tags
+
+.PHONY: changelogs
+changelogs:
+	hacks/changelogs.sh
 
 .PHONY: clean
 clean:
