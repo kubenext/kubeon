@@ -46,7 +46,7 @@ vet:
 .PHONY: test
 test:
 	@echo "===> $@"
-	@env go test -v ./internal/... ./pkg/...
+	@env go test -cover -v ./internal/... ./pkg/...
 
 .PHONY: build
 build:
