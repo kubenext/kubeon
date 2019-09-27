@@ -7,6 +7,7 @@ package store
 
 import (
 	"context"
+	"github.com/kubenext/kubeon/internal/cluster"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/client-go/tools/cache"
@@ -22,8 +23,7 @@ type Store interface {
 	Delete(ctx context.Context, key Key) error
 	Watch(ctx context.Context, key Key, handler cache.ResourceEventHandler) error
 	Unwatch(ctx context.Context, gvk ...schema.GroupVersionKind) error
-	// TODO
-	//UpdateClusterClient(ctx context.Context, client cluster.ClientInterface) error
+	UpdateClusterClient(ctx context.Context, client cluster.ClientInterface) error
 	RegisterOnUpdate(fn UpdateFn)
 	Update(ctx context.Context, key Key, updater func(*unstructured.Unstructured) error) error
 	IsLoading(ctx context.Context, key Key) bool
