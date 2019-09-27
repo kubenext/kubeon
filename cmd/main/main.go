@@ -8,9 +8,9 @@ import (
 )
 
 var (
-	version   = "devVersion"
-	gitCommit = "devGitCommit"
-	buildTime = "devBuildTime"
+	version   = "version"
+	gitCommit = "gitCommit"
+	buildTime = "buildTime"
 )
 
 func init() {
@@ -20,5 +20,5 @@ func init() {
 }
 
 func main() {
-	command.A()
+	command.Execute(version, gitCommit, buildTime)
 }
