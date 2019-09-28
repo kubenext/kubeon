@@ -11,3 +11,8 @@ type RestInterface interface {
 	RestClient() (rest.Interface, error)
 	RestConfig() *rest.Config
 }
+
+type RestConfigOptions struct {
+	Qps   float32
+	Burst int
+}
