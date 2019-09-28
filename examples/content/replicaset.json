@@ -1,0 +1,133 @@
+{
+  "title": [
+    {
+      "config": {
+        "value": "Replica Set"
+      },
+      "metadata": {
+        "type": "text"
+      }
+    },
+    {
+      "config": {
+        "value": "frontend"
+      },
+      "metadata": {
+        "type": "text"
+      }
+    }
+  ],
+  "viewComponents": [
+    {
+      "metadata": {
+        "type": "grid",
+        "title": [
+          { "metadata": { "type": "text" }, "config": { "value": "Detail" } }
+        ]
+      },
+      "config": {
+        "panels": [
+          {
+            "metadata": {
+              "type": "panel"
+            },
+            "config": {
+              "position": { "x": 0, "y": 0, "w": 12, "h": 7 },
+              "content": {
+                "metadata": {
+                  "type": "summary",
+                  "title": [
+                    {
+                      "metadata": { "type": "text" },
+                      "config": { "value": "Details" }
+                    }
+                  ]
+                },
+                "config": {
+                  "sections": [
+                    {
+                      "header": "Controlled By",
+                      "content": {
+                        "metadata": {
+                          "type": "text",
+                          "title": [
+                            {
+                              "metadata": { "type": "text" },
+                              "config": { "value": "Controlled By" }
+                            }
+                          ]
+                        },
+                        "config": {
+                          "value": "ReplicaSet/replicaset-controller"
+                        }
+                      }
+                    },
+                    {
+                      "header": "Replica Status",
+                      "content": {
+                        "metadata": {
+                          "type": "text",
+                          "title": [
+                            {
+                              "metadata": { "type": "text" },
+                              "config": { "value": "Replica Status" }
+                            }
+                          ]
+                        },
+                        "config": {
+                          "value": "Current 3 / Desired 3"
+                        }
+                      }
+                    },
+                    {
+                      "header": "Replicas",
+                      "content": {
+                        "metadata": {
+                          "type": "text",
+                          "title": [
+                            {
+                              "metadata": { "type": "text" },
+                              "config": { "value": "Replicas" }
+                            }
+                          ]
+                        },
+                        "config": {
+                          "value": "3"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "metadata": {
+              "type": "panel"
+            },
+            "config": {
+              "position": { "x": 0, "y": 7, "w": 8, "h": 7 },
+              "content": {
+                "metadata": {
+                  "type": "quadrant",
+                  "title": [
+                    {
+                      "metadata": { "type": "text" },
+                      "config": { "value": "Status" }
+                    }
+                  ]
+                },
+                "config": {
+                  "nw": { "label": "Running", "value": "3" },
+                  "ne": { "label": "Waiting", "value": "0" },
+                  "sw": { "label": "Succeeded", "value": "0" },
+                  "se": { "label": "Failed", "value": "0" }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
