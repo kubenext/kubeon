@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/GeertJohan/go.rice v1.0.0 // indirect
+	github.com/davecgh/go-spew v1.1.1
 	github.com/golang/mock v1.3.1
 	github.com/imdario/mergo v0.3.7 // indirect
 	github.com/magiconair/properties v1.8.0
